@@ -1,3 +1,3 @@
  - react-router
  - redux
- - 
+ - uitzoeken redux-form

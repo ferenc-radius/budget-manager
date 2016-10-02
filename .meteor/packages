@@ -25,3 +25,5 @@ wolves:neat
 accounts-password
 aldeed:simple-schema
 maximum:server-transform
+practicalmeteor:mocha
+insecure
