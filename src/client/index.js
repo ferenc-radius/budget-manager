@@ -7,8 +7,8 @@ import { syncHistoryWithStore } from 'react-router-redux';
 import { Provider } from 'react-redux'
 
 // routes and store
-import routes from 'routes';
-import configureStore from 'store/configureStore';
+import routes from 'app/routes';
+import configureStore from './configureStore';
 
 const store = configureStore();
 export default store;

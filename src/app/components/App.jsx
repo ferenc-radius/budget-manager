@@ -10,7 +10,7 @@ import AppBar from 'material-ui/AppBar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
-import s from "components/App.css";
+import s from "app/components/App.css";
 
 export default class App extends React.Component {
     render() {

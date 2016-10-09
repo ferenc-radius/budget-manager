@@ -3,17 +3,17 @@ let ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let path = require('path');
 
-let app_root = '/app';
+let app_root = '/src';
 
 module.exports = {
     app_root: app_root,
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
-        __dirname + '/' + app_root + '/index.js'
+        __dirname + app_root + '/client/index.js'
     ],
     resolve: {
-        root: [path.resolve(__dirname, 'app'), path.resolve(__dirname, 'node_modules')],
+        root: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'node_modules')],
         extensions: ['', '.js', '.jsx', '.css'],
         modulesDirectories: ['node_modules', 'components']
     },
@@ -49,7 +49,6 @@ module.exports = {
     },
     postcss: function (webpack) {
         return [
-            require('autoprefixer'),
             require("postcss-import")({ addDependencyTo: webpack }),
             require("postcss-url")(),
             require("postcss-cssnext")(),

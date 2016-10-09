@@ -3,7 +3,7 @@ import React from "react";
 // redux
 import { connect } from "react-redux";
 import {bindActionCreators} from "redux";
-import * as TransactionActions from "../actions/transactions";
+import * as TransactionActions from "app/actions/transactions";
 
 const mapStateToProps = (state) => {
     return {};

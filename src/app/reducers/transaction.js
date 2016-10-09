@@ -1,4 +1,4 @@
-import { DELETE_TRANSACTION } from '../actions/transactions';
+import { DELETE_TRANSACTION } from 'app/actions/transactions';
 
 export default function deleteTransaction(state = [], action) {
     switch (action.type) {
