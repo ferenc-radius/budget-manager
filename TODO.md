@@ -1,0 +1,4 @@
+ - pm2 gebruiken om bin/server.js te starten
+ - redux-form
+ - uitzoeken redux-form
+ - http://mongoosejs.com/docs/promises.html

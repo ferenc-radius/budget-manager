@@ -10,14 +10,25 @@ import { Provider } from 'react-redux'
 import routes from 'app/routes';
 import configureStore from './configureStore';
 
+// apollo graphql client
+import ApolloClient, { createNetworkInterface } from 'apollo-client';
+import { ApolloProvider } from 'react-apollo';
+
 const store = configureStore();
 export default store;
 
 const history = syncHistoryWithStore(browserHistory, store);
 
+// create connection with graphql (TODO add path to settings)
+const client = new ApolloClient({
+    networkInterface: createNetworkInterface('http://localhost:8000/graphql'),
+});
+
 render(
-    <Provider store={store}>
-        <Router history={history} routes={routes} />
-    </Provider>,
+    <ApolloProvider client={client}>
+        <Provider store={store}>
+            <Router history={history} routes={routes} />
+        </Provider>
+    </ApolloProvider>,
     document.getElementById('render-target')
 );
