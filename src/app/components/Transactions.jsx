@@ -11,8 +11,9 @@ import { graphql } from 'react-apollo';
 
 // transactions query
 const TransactionQuery = gql`
-    query Transactions { 
-        transactions { _id, name, account {name} } }
+    query Transactions {
+        transactions { _id, name, account {name} }
+    }
 `;
 
 const mapStateToProps = (state) => {
