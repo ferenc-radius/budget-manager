@@ -1,0 +1,8 @@
+.foobar {
+  background-color: white;
+
+  &:hover {
+    color: yellow;
+  }
+}
+

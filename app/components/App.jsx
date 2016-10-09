@@ -10,13 +10,14 @@ import AppBar from 'material-ui/AppBar';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+import s from "components/App.css";
 
 export default class App extends React.Component {
     render() {
-        var {children} = this.props;
+        let {children} = this.props;
         return (
             <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
-                <div className="app">
+                <div className={s.foobar}>
                     <AppBar title="kasboek" />
                     <div>{children}</div>
                 </div>

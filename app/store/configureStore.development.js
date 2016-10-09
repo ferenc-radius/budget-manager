@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import {browserHistory} from "react-router";
 import {routerMiddleware, push} from "react-router-redux";
 import createLogger from "redux-logger";
-import rootReducer from "/client/reducers";
+import rootReducer from "../reducers";
 
 //
 import * as TransactionActions from "../actions/transactions";
