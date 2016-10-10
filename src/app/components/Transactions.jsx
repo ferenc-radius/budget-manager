@@ -10,8 +10,7 @@ import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
 // transactions query
-const TransactionQuery = gql`
-    query Transactions {
+const TransactionQuery = gql`query Transactions {
         transactions { _id, name, account {name} }
     }
 `;

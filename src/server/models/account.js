@@ -1,11 +1,27 @@
 import mongoose from 'mongoose';
-import Transaction from './transaction';
+
 
 const AccountSchema = mongoose.Schema({
     name: {
         type: String
     },
-    transactions: [ {type : mongoose.Schema.ObjectId, ref : 'Transaction'} ]
+    number: { // iban
+        type: String
+    },
+    own_account: {
+        type: Boolean
+    },
+    savings: {
+        type: Boolean
+    },
+    transactions: [{
+        type: mongoose.Schema.ObjectId, ref : 'Transaction'
+    }],
+    balances: [{
+        type: mongoose.Schema.ObjectId, ref : 'Balance'
+    }],
+}, {
+    timestamps: true
 });
 
 const Account = mongoose.model('Account', AccountSchema);

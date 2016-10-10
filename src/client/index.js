@@ -14,18 +14,20 @@ import configureStore from './configureStore';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
-const store = configureStore();
-export default store;
-
-const history = syncHistoryWithStore(browserHistory, store);
-
 // create connection with graphql (TODO add path to settings)
 const client = new ApolloClient({
     networkInterface: createNetworkInterface('http://localhost:8000/graphql'),
 });
 
+const store = configureStore(client);
+export default store;
+
+const history = syncHistoryWithStore(browserHistory, store);
+
+
+
 render(
-    <ApolloProvider client={client}>
+    <ApolloProvider store={store} client={client}>
         <Provider store={store}>
             <Router history={history} routes={routes} />
         </Provider>
