@@ -11,6 +11,8 @@
  
  
 ## Technical  
+ - material-ui vervangen door react-toolbox 
+ - reactd3 aan de praat krijgen.
  - flow gebruiken?
  - opspliten logica in components & containers > zie meatier
  - idee van redux (laden data etc) > https://github.com/mattkrick/meatier
