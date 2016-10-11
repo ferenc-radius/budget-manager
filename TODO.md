@@ -11,6 +11,7 @@
  
  
 ## Technical  
+ - https://github.com/javivelasco/react-css-themr
  - material-ui vervangen door react-toolbox 
  - reactd3 aan de praat krijgen.
  - flow gebruiken?
