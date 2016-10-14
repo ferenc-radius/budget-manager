@@ -1,4 +1,20 @@
 import mongoose from 'mongoose';
+import db from "../conect";
+
+// an account has balances
+export const BalanceSchema = mongoose.Schema({
+    amount: {
+        type: Number
+    },
+    account: {
+        type: mongoose.Schema.Types.ObjectId, ref: 'Account'
+    },
+    datetime: {
+        type: Date
+    }
+}, {
+    timestamps: true
+});
 
 
 const AccountSchema = mongoose.Schema({
@@ -17,12 +33,10 @@ const AccountSchema = mongoose.Schema({
     transactions: [{
         type: mongoose.Schema.ObjectId, ref : 'Transaction'
     }],
-    balances: [{
-        type: mongoose.Schema.ObjectId, ref : 'Balance'
-    }],
+    balances: [BalanceSchema],
 }, {
     timestamps: true
 });
 
-const Account = mongoose.model('Account', AccountSchema);
+const Account = db.model('Account', AccountSchema);
 export default Account;

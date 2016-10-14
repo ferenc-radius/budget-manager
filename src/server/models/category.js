@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import db from "../conect";
 
 const CategorySchema = mongoose.Schema({
     name: {
@@ -11,5 +12,5 @@ const CategorySchema = mongoose.Schema({
     timestamps: true
 });
 
-const Category = mongoose.model('Category', CategorySchema);
+const Category = db.model('Category', CategorySchema);
 export default Category;

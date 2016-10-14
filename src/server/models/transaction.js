@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import db from "../conect";
 
 const TransactionSchema = mongoose.Schema({
     name: {
@@ -23,5 +24,5 @@ const TransactionSchema = mongoose.Schema({
     timestamps: true
 });
 
-const Transaction = mongoose.model('Transaction', TransactionSchema);
+const Transaction = db.model('Transaction', TransactionSchema);
 export default Transaction;

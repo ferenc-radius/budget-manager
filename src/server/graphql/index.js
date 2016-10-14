@@ -1,6 +1,5 @@
 // models
 import Account from "../models/account";
-import Balance from "../models/balance";
 import Budget from "../models/budget";
 import Category from "../models/category";
 import Transaction from "../models/transaction";
@@ -15,7 +14,6 @@ const options = {
 // expose models
 let schema = getSchema([
     Account,
-    Balance,
     Budget,
     Category,
     Transaction

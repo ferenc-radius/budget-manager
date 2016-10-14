@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import db from "../conect";
 
 const InvoiceSchema = mongoose.Schema({
     name: {
@@ -26,5 +27,5 @@ const InvoiceSchema = mongoose.Schema({
     timestamps: true
 });
 
-const Category = mongoose.model('Category', InvoiceSchema);
-export default Category;
+const Invoice = db.model('Invoice', InvoiceSchema);
+export default Invoice;

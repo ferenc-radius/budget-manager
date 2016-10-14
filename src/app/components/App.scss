@@ -1,0 +1,12 @@
+@import "../theme/_theme";
+
+.appPanel {
+  padding: 0;
+  overflow-y: auto;
+}
+footer {
+  background: $color-accent;
+  p {
+    padding: 1em;
+  }
+}

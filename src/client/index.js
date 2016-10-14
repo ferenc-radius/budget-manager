@@ -14,6 +14,13 @@ import configureStore from './configureStore';
 import ApolloClient, { createNetworkInterface } from 'apollo-client';
 import { ApolloProvider } from 'react-apollo';
 
+// theme
+import { ThemeProvider } from 'react-css-themr';
+import componentTheme from "app/theme/dropdown.scss";
+const contextTheme = {
+    RTDropdown: componentTheme
+};
+
 // create connection with graphql (TODO add path to settings)
 const client = new ApolloClient({
     networkInterface: createNetworkInterface('http://localhost:8000/graphql'),
@@ -24,13 +31,17 @@ export default store;
 
 const history = syncHistoryWithStore(browserHistory, store);
 
-
+// click fix thingie
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 render(
-    <ApolloProvider store={store} client={client}>
-        <Provider store={store}>
-            <Router history={history} routes={routes} />
-        </Provider>
-    </ApolloProvider>,
+    <ThemeProvider theme={contextTheme}>
+        <ApolloProvider store={store} client={client}>
+            <Provider store={store}>
+                <Router history={history} routes={routes} />
+            </Provider>
+        </ApolloProvider>
+    </ThemeProvider>,
     document.getElementById('render-target')
 );

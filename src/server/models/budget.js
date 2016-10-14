@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import db from "../conect";
 
 
 const BudgetSchema = mongoose.Schema({
@@ -24,5 +25,5 @@ const BudgetSchema = mongoose.Schema({
     timestamps: true
 });
 
-const Budget = mongoose.model('Budget', BudgetSchema);
+const Budget = db.model('Budget', BudgetSchema);
 export default Budget;

@@ -1,13 +1,9 @@
 import express from 'express';
 import graphqlHTTP from 'express-graphql';
-import mongoose from 'mongoose';
 import cors from 'cors';
 
 import schema from './graphql';
 let app = express();
-
-// Connect mongo database
-mongoose.connect('mongodb://localhost/kasboek');
 
 // Add headers
 app.use(cors());

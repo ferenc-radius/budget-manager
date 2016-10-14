@@ -1,0 +1,28 @@
+@import "~react-toolbox/lib/dropdown/theme";
+
+// copy of original the > * { selector doesnt work ...
+.values {
+  @include no-webkit-scrollbar;
+  position: absolute;
+  z-index: $z-index-high;
+  width: 100%;
+  overflow-y: auto;
+  list-style: none;
+  background-color: $dropdown-color-white;
+  border-radius: $dropdown-value-border-radius;
+  transition-timing-function: $animation-curve-default;
+  transition-duration: $animation-duration;
+  transition-property: max-height, box-shadow;
+  > li {
+    position: relative;
+    padding: $unit;
+    overflow: hidden;
+    cursor: pointer;
+    &:hover {
+      background-color: $dropdown-value-hover-background;
+    }
+    &.selected {
+      color: $dropdown-color-primary;
+    }
+  }
+}
