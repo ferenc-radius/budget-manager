@@ -2,10 +2,12 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from 'app/components/App';
-import TransactionList from 'app/components/Transactions';
+import TransactionContainer from 'app/modules/transactions/containers/Transactions';
+import TestSidePanel from 'app/components/sidepanels/Test';
+import TestActionPanel from 'app/components/actionpanels/Test';
 
 export default (
     <Route path="/" component={App}>
-        <IndexRoute component={TransactionList} />
+        <IndexRoute components={{main: TransactionContainer, sidePanel: TestSidePanel, actionPanel: TestActionPanel}} />
     </Route>
 );

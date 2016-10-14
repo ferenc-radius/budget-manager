@@ -8,17 +8,20 @@ import createLogger from "redux-logger";
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
-// import reducers from modules
-import transactions from 'app/reducers/transaction';
+// reducers from modules
+import transactions from 'app/modules/transactions/reducers/transaction';
 
-import * as TransactionActions from "../app/actions/transactions";
+// actions
+import * as transactionActions from "app/modules/transactions/actions/transactions";
+import apolloActions from 'apollo-client/actions';
 
 export default function configureStore(apolloClient, initialState) {
     let store;
     const reduxRouterMiddleWare = routerMiddleware(browserHistory);
     const middlewares = [
         reduxRouterMiddleWare,
-        thunkMiddleware
+        thunkMiddleware, // TODO thunk.withExtraArgument(apolloClient) ??
+        apolloClient.middleware()
     ];
 
     const rootReducer = combineReducers({
@@ -37,7 +40,8 @@ export default function configureStore(apolloClient, initialState) {
         middlewares.push(logger);
 
         const actionCreators = {
-            ...TransactionActions,
+            ...transactionActions,
+            apolloActions,
             push,
         };
 

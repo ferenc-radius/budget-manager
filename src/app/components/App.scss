@@ -3,6 +3,7 @@
 .appPanel {
   padding: 0;
   overflow-y: auto;
+  flex: 1;
 }
 footer {
   background: $color-accent;

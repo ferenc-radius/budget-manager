@@ -16,11 +16,8 @@
  
 
 ## transactions through reducer
- - https://github.com/reactbits/make-reducer
- - https://github.com/mattkrick/meatier/blob/master/src/universal/modules/kanban/ducks/lanes.js
- - https://github.com/mattkrick/redux-optimistic-ui
- - idee van redux (laden data etc) > https://github.com/mattkrick/meatier
- - opspliten logica in components & containers > zie meatier
+ - https://medium.com/apollo-stack/pagination-and-infinite-scrolling-in-apollo-client-59ff064aac61#.lfp7bludv
+ - https://github.com/pauldijou/redux-act
  - redux + graphql > http://dev.apollodata.com/react/redux.html
  
 ## UI
@@ -30,10 +27,19 @@
  - uitzoeken redux-form
  
 ## Technical
+ - https://github.com/gaearon/redux-thunk
+ - http://redux.js.org/docs/basics/Actions.html
+ - https://github.com/happypoulp/redux-tutorial/blob/master/00_introduction.js
+ - https://facebook.github.io/react/docs/thinking-in-react.html
  - reactd3 aan de praat krijgen.
  - mongo indexes?
  
+## ophalen csv knab
+ - redux-saga
+ 
 ## testing
+ - enzyme
+ - http://chaijs.com/
  - tests schrijven http://redux.js.org/docs/recipes/WritingTests.html
  
 ## Interesting
