@@ -36,7 +36,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {actions: bindActionCreators(TransactionActions, dispatch)};
 };
 
-@graphql(TransactionQuery)
+@graphql(TransactionQuery, {
+    options: { pollInterval: 10000 }, // till we get a pub/sub system in place ;)
+})
 @graphql(RemoveTransactionQuery, {
     props: ({ mutate }) => ({
         deleteAction: (id) => {mutate({variables: {id}})}

@@ -10,15 +10,19 @@
  - inzien uitgaven in budget (transactions in category van budget)
  
 ## structure  
- - fonts in code!
- - theme stucture?
  - pm2 gebruiken om bin/server.js te starten
  
-
-## transactions through reducer
+## transactions paginering
  - https://medium.com/apollo-stack/pagination-and-infinite-scrolling-in-apollo-client-59ff064aac61#.lfp7bludv
+ 
+## redux for csv parsing? 
  - https://github.com/pauldijou/redux-act
- - redux + graphql > http://dev.apollodata.com/react/redux.html
+ - https://github.com/gaearon/redux-thunk
+ - http://redux.js.org/docs/basics/Actions.html
+ - https://github.com/happypoulp/redux-tutorial/blob/master/00_introduction.js
+ 
+## pub/sub
+ - ?
  
 ## UI
  https://github.com/react-toolbox/react-toolbox/pull/864
@@ -27,10 +31,6 @@
  - uitzoeken redux-form
  
 ## Technical
- - https://github.com/gaearon/redux-thunk
- - http://redux.js.org/docs/basics/Actions.html
- - https://github.com/happypoulp/redux-tutorial/blob/master/00_introduction.js
- - https://facebook.github.io/react/docs/thinking-in-react.html
  - reactd3 aan de praat krijgen.
  - mongo indexes?
  
