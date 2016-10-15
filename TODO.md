@@ -13,9 +13,11 @@
  - pm2 gebruiken om bin/server.js te starten
  
 ## transactions paginering
+ - http://graphql.org/learn/
  - https://medium.com/apollo-stack/pagination-and-infinite-scrolling-in-apollo-client-59ff064aac61#.lfp7bludv
  
 ## redux for csv parsing? 
+ - https://medium.com/front-end-developers/the-command-pattern-c51292e22ea7#.hbe18ql6x
  - https://github.com/pauldijou/redux-act
  - https://github.com/gaearon/redux-thunk
  - http://redux.js.org/docs/basics/Actions.html

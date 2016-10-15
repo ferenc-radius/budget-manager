@@ -13,6 +13,8 @@ import {graphql} from 'react-apollo';
 import TransactionList from "../components/Transactions";
 import Loader from "app/components/Loader";
 
+
+// TODO move to own module
 // transactions query
 const TransactionQuery = gql`
     query Transactions {
@@ -20,7 +22,8 @@ const TransactionQuery = gql`
     }
 `;
 
-const RemoveTransactionQuery = gql`
+// TODO move to own module
+const RemoveTransactionQuery = gql`    
     mutation deleteTransaction($id: ID!) {
         deleteTransaction(input: {id: $id}) {
             ok
