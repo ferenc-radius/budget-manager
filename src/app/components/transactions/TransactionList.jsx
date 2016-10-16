@@ -9,7 +9,7 @@ import FontAwesome from 'react-fontawesome';
 export default class TransactionsList extends React.Component {
 
     static propTypes = {
-        deleteAction: React.PropTypes.func.isRequired,
+        deleteTransaction: React.PropTypes.func.isRequired,
         transactions: React.PropTypes.array.isRequired
     };
 
@@ -23,7 +23,7 @@ export default class TransactionsList extends React.Component {
                         <ListItem
                             key={transaction._id}
                             rightIcon={
-                                <IconButton onClick={this.props.deleteAction.bind(this, transaction._id)} icon="delete" />
+                                <IconButton onClick={this.props.deleteTransaction.bind(this, transaction._id)} icon="delete" />
                             }
                             caption={transaction.name}
                             legend={transaction.account? transaction.account.name : ""}

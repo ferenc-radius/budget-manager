@@ -26,7 +26,7 @@ const client = new ApolloClient({
     networkInterface: createNetworkInterface('http://localhost:8000/graphql'),
 });
 
-const store = configureStore(client);
+export const store = configureStore(client);
 export default store;
 
 const history = syncHistoryWithStore(browserHistory, store);

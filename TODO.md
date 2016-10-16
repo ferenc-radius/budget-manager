@@ -10,6 +10,8 @@
  - inzien uitgaven in budget (transactions in category van budget)
  
 ## structure  
+ - actions/reducers opschonen met https://github.com/pauldijou/redux-act
+ - https://www.npmjs.com/package/invariant
  - pm2 gebruiken om bin/server.js te starten
  
 ## transactions paginering
@@ -17,11 +19,8 @@
  - https://medium.com/apollo-stack/pagination-and-infinite-scrolling-in-apollo-client-59ff064aac61#.lfp7bludv
  
 ## redux for csv parsing? 
- - https://medium.com/front-end-developers/the-command-pattern-c51292e22ea7#.hbe18ql6x
- - https://github.com/pauldijou/redux-act
- - https://github.com/gaearon/redux-thunk
+ - https://facebook.github.io/immutable-js/
  - http://redux.js.org/docs/basics/Actions.html
- - https://github.com/happypoulp/redux-tutorial/blob/master/00_introduction.js
  
 ## pub/sub
  - ?
@@ -46,3 +45,7 @@
  
 ## Interesting
  - https://ant.design/components/tree-select/ > voor selecteren categorieen
+ - https://github.com/apollostack/meteor-starter-kit
+ 
+## later 
+ - loader animatinos

@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
 import App from 'app/components/App';
-import TransactionContainer from 'app/modules/transactions/containers/Transactions';
+import TransactionContainer from 'app/containers/Transactions';
 import TestSidePanel from 'app/components/sidepanels/Test';
 import TestActionPanel from 'app/components/actionpanels/Test';
 

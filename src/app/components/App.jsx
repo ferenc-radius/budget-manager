@@ -1,15 +1,19 @@
-import React from 'react';
+import React from "react";
 
 // ui
-import { AppBar, Checkbox, IconButton } from 'react-toolbox';
-import { Layout, NavDrawer, Panel, Sidebar } from 'react-toolbox';
-import FontIcon from 'react-toolbox/lib/font_icon';
+import { AppBar, Checkbox, IconButton } from "react-toolbox";
+import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
+import FontIcon from "react-toolbox/lib/font_icon";
 
 // grid
-import { Grid, Row, Col } from 'react-flexbox-grid/lib/index';
+import { Grid, Row, Col } from "react-flexbox-grid/lib/index";
 
+// notifications and loader
+import NotificationContainer from "app/containers/Notification";
+import LoaderContainer from "app/containers/Loader";
 
 import styles from "app/components/App.scss";
+
 
 export default class App extends React.Component {
     // TODO define props (panels + main)
@@ -25,21 +29,21 @@ export default class App extends React.Component {
 
     render() {
         const { main, sidePanel, actionPanel } = this.props;
-
         return (
             <Layout>
                 <NavDrawer active={this.state.drawerActive}
-                           pinned={this.state.drawerPinned} permanentAt='xxxl'
-                           onOverlayClick={::this.toggleDrawerActive }>
+                           pinned={this.state.drawerPinned} permanentAt="xxxl"
+                           onOverlayClick={::this.toggleDrawerActive}>
                     <p>
-                        <FontIcon value='add' />
+                        <FontIcon value="add" />
                     </p>
                 </NavDrawer>
                 <Panel>
                     <AppBar>
-                        <IconButton icon='menu' inverse={ true } onClick={::this.toggleDrawerActive }/>
+                        <IconButton icon="menu" inverse={ true } onClick={::this.toggleDrawerActive }/>
                     </AppBar>
                     <div className={styles.appPanel}>
+                        <LoaderContainer />
                         <Grid fluid={true}>
                             <Row>
                                 <Col xsOffset={3} xs={12}>
@@ -56,7 +60,10 @@ export default class App extends React.Component {
                             </Row>
                         </Grid>
                     </div>
-                    <footer><p>Current version: {VERSION}</p></footer>
+                    <footer>
+                        <NotificationContainer />
+                        <p>Current version: {VERSION}</p>
+                    </footer>
                 </Panel>
             </Layout>
         )

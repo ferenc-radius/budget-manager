@@ -9,10 +9,14 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
 // reducers from modules
-import transactions from 'app/modules/transactions/reducers/transaction';
+import transactions from '../app/reducers/transactions';
+import notification from '../app/reducers/notification';
+import loader from '../app/reducers/loader';
 
 // actions
-import * as transactionActions from "app/modules/transactions/actions/transactions";
+import * as transactionActions from "../app/actions/transactions";
+import * as notificationsActions from "../app/actions/notification";
+import * as loaderActions from "../app/actions/loader";
 import apolloActions from 'apollo-client/actions';
 
 export default function configureStore(apolloClient, initialState) {
@@ -20,13 +24,15 @@ export default function configureStore(apolloClient, initialState) {
     const reduxRouterMiddleWare = routerMiddleware(browserHistory);
     const middlewares = [
         reduxRouterMiddleWare,
-        thunkMiddleware, // TODO thunk.withExtraArgument(apolloClient) ??
+        thunkMiddleware.withExtraArgument(apolloClient),
         apolloClient.middleware()
     ];
 
     const rootReducer = combineReducers({
         apollo: apolloClient.reducer(),
         transactions,
+        notification,
+        loader,
         routing
     });
 
@@ -41,6 +47,8 @@ export default function configureStore(apolloClient, initialState) {
 
         const actionCreators = {
             ...transactionActions,
+            ...notificationsActions,
+            ...loaderActions,
             apolloActions,
             push,
         };
