@@ -7,10 +7,10 @@ import loaderStyles from "./Loader.scss";
 export default class Loader extends React.Component {
     render() {
         const {enabled} = this.props;
-        let className = {};
-        className[loaderStyles.disabled] = !enabled;
-        className[loaderStyles.enabled] = enabled;
-        className[loaderStyles.expose] = true;
+        let className = {
+            [loaderStyles.disabled]: !enabled,
+            [loaderStyles.enabled]: enabled
+        };
 
         const enabledClass = classNames(className);
 

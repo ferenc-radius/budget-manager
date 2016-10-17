@@ -6,10 +6,10 @@ const initialState = {
 export default function notifications(state = initialState, action) {
     switch (action.type) {
         case ENABLE_LOADER:
-            return Object.assign({enabled: true}, action);
+            return {enabled: true};
 
         case DISABLE_LOADER:
-            return Object.assign({enabled: false}, action);
+            return {enabled: false};
 
         default:
             return state;

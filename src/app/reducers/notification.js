@@ -14,17 +14,17 @@ const initialState = {
 export default function notifications(state = initialState, action) {
     switch (action.type) {
         case SHOW_NOTIFICATIONS:
-            let newState = Object.assign({show: true}, action);
+            let newState = {show: true, ...action.payload};
 
             // force the initial options when the action options provides none
-            _.mergeWith(action.options, initialState.options, (objValue, srcValue) => {
+            _.mergeWith(action.payload.options, initialState.options, (objValue, srcValue) => {
                 return srcValue !== undefined ? srcValue : objValue;
             });
 
             return newState;
 
         case HIDE_NOTIFICATIONS:
-            return Object.assign({show: false}, action);
+            return {...initialState, show: false};
 
         default:
             return state;

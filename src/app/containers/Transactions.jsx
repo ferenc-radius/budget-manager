@@ -4,6 +4,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import {deleteTransaction, loadTransactions} from "app/actions/transactions";
+import {setSidePanel, setActionPanel} from "app/actions/panels";
 
 // ui
 import TransactionList from "app/components/transactions/TransactionList.jsx";
@@ -11,12 +12,14 @@ import TransactionList from "app/components/transactions/TransactionList.jsx";
 
 const mapStateToProps = (state) => {
     return {
-        transactions: state.transactions.transactions
+        transactions: state.transactions.list
     };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     dispatch(loadTransactions());
+    dispatch(setSidePanel("accounts"));  // TODO panel enum ?
+    // dispatch(setActionPanel("foobar"));  // TODO panel enum ?
     return bindActionCreators({ deleteTransaction }, dispatch)
 };
 

@@ -5,19 +5,16 @@ import { AppBar, Checkbox, IconButton } from "react-toolbox";
 import { Layout, NavDrawer, Panel, Sidebar } from "react-toolbox";
 import FontIcon from "react-toolbox/lib/font_icon";
 
-// grid
-import { Grid, Row, Col } from "react-flexbox-grid/lib/index";
 
 // notifications and loader
 import NotificationContainer from "app/containers/Notification";
 import LoaderContainer from "app/containers/Loader";
+import GridLayoutContainer from "app/containers/GridLayout";
 
 import styles from "app/components/App.scss";
 
 
 export default class App extends React.Component {
-    // TODO define props (panels + main)
-
     state = {
         drawerActive: false,
         drawerPinned: false
@@ -28,7 +25,8 @@ export default class App extends React.Component {
     }
 
     render() {
-        const { main, sidePanel, actionPanel } = this.props;
+        // pass the children (passed by the router) as main content for the grid-layout.
+        let {children} = this.props;
         return (
             <Layout>
                 <NavDrawer active={this.state.drawerActive}
@@ -44,21 +42,7 @@ export default class App extends React.Component {
                     </AppBar>
                     <div className={styles.appPanel}>
                         <LoaderContainer />
-                        <Grid fluid={true}>
-                            <Row>
-                                <Col xsOffset={3} xs={12}>
-                                    {actionPanel}
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col xs={3}>
-                                    {sidePanel}
-                                </Col>
-                                <Col xs={9}>
-                                    {main}
-                                </Col>
-                            </Row>
-                        </Grid>
+                        <GridLayoutContainer main={children} />
                     </div>
                     <footer>
                         <NotificationContainer />

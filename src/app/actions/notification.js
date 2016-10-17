@@ -4,8 +4,10 @@ export const HIDE_NOTIFICATIONS = "HIDE_NOTIFICATIONS";
 export function showNotification(message, options={}) {
     return {
         type: SHOW_NOTIFICATIONS,
-        message,
-        options
+        payload: {
+            message,
+            options
+        }
     }
 }
 

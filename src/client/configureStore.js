@@ -9,11 +9,15 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
 // reducers from modules
+import panels from '../app/reducers/panels';
+import accounts from '../app/reducers/accounts';
 import transactions from '../app/reducers/transactions';
 import notification from '../app/reducers/notification';
 import loader from '../app/reducers/loader';
 
 // actions
+import * as panelActions from "../app/actions/panels";
+import * as accountActions from "../app/actions/accounts";
 import * as transactionActions from "../app/actions/transactions";
 import * as notificationsActions from "../app/actions/notification";
 import * as loaderActions from "../app/actions/loader";
@@ -30,6 +34,8 @@ export default function configureStore(apolloClient, initialState) {
 
     const rootReducer = combineReducers({
         apollo: apolloClient.reducer(),
+        panels,
+        accounts,
         transactions,
         notification,
         loader,
@@ -46,6 +52,8 @@ export default function configureStore(apolloClient, initialState) {
         middlewares.push(logger);
 
         const actionCreators = {
+            ...panelActions,
+            ...accountActions,
             ...transactionActions,
             ...notificationsActions,
             ...loaderActions,
