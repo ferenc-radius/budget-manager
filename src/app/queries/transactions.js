@@ -9,7 +9,28 @@ export const RemoveTransactionQuery = gql`
 `;
 
 export const TransactionListQuery = gql`
-    query Transactions {
-        transactions { _id, name, account {name}, categories {count} }
+
+    query Transactions($accountId: ID!) {
+        account(id: $accountId) {
+            transactions {
+                edges {
+                    node {
+                        _id,
+                        name,
+                        amount,
+                        createdAt,
+                        dateTime,
+                        categories {
+                            edges {
+                                node {
+                                    _id,
+                                    name
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 `;

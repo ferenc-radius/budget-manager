@@ -5,7 +5,10 @@ const initialState = {list: []};
 export default function transactions(state = initialState, action) {
     switch (action.type) {
         case TRANSACTIONS_LOADED:
-            return {...state, list: action.result.data.transactions};
+            const serverData = action.result.data;
+            const transactions = serverData.account.transactions.edges.map(edge => edge.node);
+
+            return {...state, list: transactions};
 
         default:
             return state;

@@ -1,5 +1,6 @@
 import {AccountListQuery} from "app/queries/accounts";
 import {enableLoader, disableLoader} from "app/actions/loader";
+import {loadTransactions} from "app/actions/transactions";
 
 export const ACCOUNTS_LOADED = "ACCOUNTS_LOADED";
 export const ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
@@ -7,6 +8,7 @@ export const ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
 export function loadAccounts(own_accounts=true) {
     return function (dispatch, getState, apolloClient) {
         dispatch(enableLoader());
+
         apolloClient.query({
             query: AccountListQuery,
             forceFetch: true,
@@ -33,10 +35,10 @@ export function accountsLoaded(result) {
 
 export function selectAccount(id) {
     return function (dispatch, getState, apolloClient) {
-        // dispatch();
         dispatch({
             type: ACCOUNT_SELECTED,
             id
         });
+        dispatch(loadTransactions())
     }
 }

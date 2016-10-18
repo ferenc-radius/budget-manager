@@ -1,13 +1,11 @@
 import mongoose from 'mongoose';
 import db from "../conect";
 
+
 // an account has balances
 export const BalanceSchema = mongoose.Schema({
     amount: {
         type: Number
-    },
-    account: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'Account'
     },
     datetime: {
         type: Date

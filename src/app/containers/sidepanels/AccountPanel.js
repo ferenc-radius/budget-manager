@@ -18,10 +18,26 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-    dispatch(loadAccounts());
-    return bindActionCreators({ onClick: selectAccount }, dispatch);
+    const actions = bindActionCreators({
+        onClick: selectAccount,
+    }, dispatch);
+
+    return {
+        ...actions,
+        dispatch
+    };
 };
 
+@connect(mapStateToProps, mapDispatchToProps)
+export default class AccountPanelContainer extends React.Component {
 
-const AccountPanelContainer = connect(mapStateToProps, mapDispatchToProps)(AccountList);
-export default AccountPanelContainer;
+    componentDidMount() {
+        this.props.dispatch(loadAccounts());
+    }
+
+    render() {
+        return (
+            <AccountList {...this.props} />
+        )
+    }
+}

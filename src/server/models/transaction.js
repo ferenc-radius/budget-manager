@@ -1,7 +1,8 @@
 import mongoose from 'mongoose';
 import db from "../conect";
+import Account from "./account";
 
-const TransactionSchema = mongoose.Schema({
+export const TransactionSchema = mongoose.Schema({
     name: {
         type: String
     },
@@ -22,6 +23,11 @@ const TransactionSchema = mongoose.Schema({
     }
 }, {
     timestamps: true
+});
+
+// when adding a transaction associate it with the account.
+TransactionSchema.post('save', function(doc) {
+    Account.findOneAndUpdate({_id: doc.account}, {$push: {transactions: doc._id}}).exec()
 });
 
 const Transaction = db.model('Transaction', TransactionSchema);

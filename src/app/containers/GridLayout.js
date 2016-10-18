@@ -13,6 +13,7 @@ const panelMap = {
 
 const mapStateToProps = (state) => {
 
+    // TODO part of this belongs to the reducer...
     // transform array to object {panel_type: panelComponent}
     let panels = state.panels.map(p => {
         return {[p.type]: p.name};

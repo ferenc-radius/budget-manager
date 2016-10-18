@@ -3,7 +3,7 @@ import React from "react";
 // redux
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import {deleteTransaction, loadTransactions} from "app/actions/transactions";
+import {deleteTransaction} from "app/actions/transactions";
 import {setSidePanel, setActionPanel} from "app/actions/panels";
 
 // ui
@@ -17,12 +17,26 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    dispatch(loadTransactions());
-    dispatch(setSidePanel("accounts"));  // TODO panel enum ?
-    // dispatch(setActionPanel("foobar"));  // TODO panel enum ?
-    return bindActionCreators({ deleteTransaction }, dispatch)
+    const actions = bindActionCreators({
+        deleteTransaction,
+    }, dispatch);
+
+    return {
+        ...actions,
+        dispatch
+    }
 };
 
+@connect(mapStateToProps, mapDispatchToProps)
+export default class TransactionsContainer extends React.Component {
 
-const TransactionsContainer = connect(mapStateToProps, mapDispatchToProps)(TransactionList);
-export default TransactionsContainer;
+    componentDidMount() {
+        this.props.dispatch(setSidePanel("accounts"));
+    }
+
+    render() {
+        return (
+            <TransactionList {...this.props} />
+        )
+    }
+}

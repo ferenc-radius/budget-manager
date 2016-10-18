@@ -6,13 +6,20 @@ import {enableLoader, disableLoader} from "app/actions/loader";
 
 export const TRANSACTIONS_LOADED = "TRANSACTIONS_LOADED";
 
-export function loadTransactions(showLoader=true) {
+export function loadTransactions(forceFetch=false) {
     return function (dispatch, getState, apolloClient) {
         dispatch(enableLoader());
 
+        // query all transactions from selected account
+        const currentState = getState();
+        const accountId = currentState.accounts.selectedAccount;
+
         apolloClient.query({
             query: TransactionListQuery,
-            forceFetch: true
+            forceFetch: forceFetch,
+            variables: {
+                accountId
+            }
         }).then(
            result => dispatch(transactionLoaded(result)),
            error => noop => noop
@@ -37,7 +44,7 @@ export function transactionLoaded(result) {
 export function deleteTransaction(id) {
     return function (dispatch, getState, apolloClient) {
         apolloClient.mutate({mutation: RemoveTransactionQuery, variables: {id}}).then((result) => {
-            dispatch(loadTransactions(false));
+            dispatch(loadTransactions(true));
             dispatch(showNotification("Transaction verwijderd."));
         })
     };
