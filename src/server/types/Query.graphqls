@@ -1,0 +1,4 @@
+type Query {
+    account(_id: ID!): Account,
+    accounts(name: String): [Account]
+}

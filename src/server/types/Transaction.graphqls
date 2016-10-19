@@ -1,0 +1,9 @@
+type Transaction {
+    _id: ID!
+    name: String!
+    direction: Direction
+    byAccount: Account
+    amount: Int
+    dateTime: String
+    categories: [Category]
+}

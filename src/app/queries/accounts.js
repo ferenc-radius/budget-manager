@@ -1,16 +1,17 @@
 import gql from 'graphql-tag';
 
+// (own_account: $own_account)
 export const AccountListQuery = gql`
-    query Accounts($own_account: Boolean!) {
-        accounts(own_account: $own_account) { 
-            _id, 
-            name, 
-            number, 
-            own_account, 
-            savings, 
+    query Account{
+        accounts { 
+            _id,
+            name,
+            number,
+            own_account,
+            savings,
             balances {
-                amount, 
-                createdAt
+                dateTime,
+                amount
             }
         }
     }

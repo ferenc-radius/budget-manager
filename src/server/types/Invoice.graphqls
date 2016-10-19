@@ -1,0 +1,10 @@
+type Invoice {
+    _id: ID!
+    name: String!
+    account: Account
+    transactions: [Transaction]
+    expectedAmount: Int
+    startDate: String
+    endDate: String
+    interval: Interval
+}

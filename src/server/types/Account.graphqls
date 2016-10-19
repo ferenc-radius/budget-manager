@@ -1,0 +1,10 @@
+type Account {
+    _id: ID!
+    name: String,
+    number: String,
+    amount: Int
+    own_account: Boolean
+    savings: Boolean
+    balances: [Balance]
+    transactions: [Transaction]
+}

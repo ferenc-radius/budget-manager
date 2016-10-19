@@ -1,0 +1,8 @@
+input InputAccount {
+    name: String,
+    amount: Int
+}
+
+type Mutation {
+    addAccount(input: InputAccount!) : Account
+}

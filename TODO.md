@@ -8,25 +8,30 @@
  - transaction aan account hangen (van en tot rekening > 2 accounts).
  - transaction aan category hangen.
  - inzien uitgaven in budget (transactions in category van budget)
+
+## UI
+ - https://www.materialpalette.com
+
+## graphql
+ - https://github.com/nodkz/graphql-compose > resolver composen?
+   - https://github.com/nodkz/graphql-compose/blob/master/src/resolver.js
  
 ## structure  
- - actions/reducers opschonen met https://github.com/pauldijou/redux-act
+ - https://github.com/nnance/f8app-apollo > flowtype
  - https://www.npmjs.com/package/invariant
+
+## starten servers
  - pm2 gebruiken om bin/server.js te starten
+ - docker ??
  
 ## transactions paginering
- - http://graphql.org/learn/
  - https://medium.com/apollo-stack/pagination-and-infinite-scrolling-in-apollo-client-59ff064aac61#.lfp7bludv
  
-## redux for csv parsing? 
- - https://facebook.github.io/immutable-js/
- - http://redux.js.org/docs/basics/Actions.html
+## csv parsing 
+ - ?
  
 ## pub/sub
  - ?
- 
-## UI
- https://github.com/react-toolbox/react-toolbox/pull/864
  
 ## forms
  - uitzoeken redux-form
@@ -36,7 +41,7 @@
  - mongo indexes?
  
 ## ophalen csv knab
- - redux-saga
+ - redux-saga > gebruiken in combi met apollo client (ophalen accounts?)
  
 ## testing
  - enzyme
@@ -45,7 +50,6 @@
  
 ## Interesting
  - https://ant.design/components/tree-select/ > voor selecteren categorieen
- - https://github.com/apollostack/meteor-starter-kit
  
 ## later 
- - loader animatinos
+ - loader animations

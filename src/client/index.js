@@ -23,7 +23,7 @@ const contextTheme = {
 
 // create connection with graphql (TODO add path to settings)
 const client = new ApolloClient({
-    networkInterface: createNetworkInterface('http://localhost:8000/graphql'),
+    networkInterface: createNetworkInterface({uri: 'http://localhost:8000/graphql'}),
 });
 
 export const store = configureStore(client);

@@ -1,0 +1,9 @@
+enum Direction {
+    IN,
+    OUT
+}
+enum Interval {
+    NONE,
+    MONTH,
+    YEAR
+}

@@ -1,0 +1,9 @@
+type Budget {
+    _id: ID!
+    name: String!
+    amount: Int!
+    category: Category
+    startDate: String
+    endDate: String
+    interval: Interval
+}

@@ -5,6 +5,13 @@
     "stage-0"
   ],
   "plugins": [
+    ["babel-plugin-inline-import", {
+      "extensions": [
+        ".json",
+        ".graphql",
+        ".graphqls",
+      ]
+    }],
     "transform-class-properties",
     "transform-function-bind",
     "babel-plugin-transform-decorators-legacy",
@@ -14,6 +21,6 @@
     "transform-class-properties",
     "transform-function-bind",
     "babel-plugin-transform-decorators-legacy",
-    "tcomb",
+    "tcomb"
   ]
 }

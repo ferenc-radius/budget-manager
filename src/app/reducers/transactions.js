@@ -6,7 +6,7 @@ export default function transactions(state = initialState, action) {
     switch (action.type) {
         case TRANSACTIONS_LOADED:
             const serverData = action.result.data;
-            const transactions = serverData.account.transactions.edges.map(edge => edge.node);
+            const transactions = serverData.account.transactions;
 
             return {...state, list: transactions};
 
