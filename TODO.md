@@ -13,8 +13,8 @@
  - https://www.materialpalette.com
 
 ## graphql
- - https://github.com/nodkz/graphql-compose > resolver composen?
-   - https://github.com/nodkz/graphql-compose/blob/master/src/resolver.js
+ - querybuilder > filters toevoegen (herschrijven naar class)
+ - loading relations...
  
 ## structure 
  - refactor dir structure > 

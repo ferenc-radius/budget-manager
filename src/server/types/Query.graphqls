@@ -1,4 +1,17 @@
+enum ORDER {
+    ASC,
+    DESC
+}
+
+input OrderBy {
+    name: String,
+    direction: ORDER
+}
+
 type Query {
     account(_id: ID!): Account,
-    accounts(name: String): [Account]
+    accounts(name: String, name__icontains: String, order: OrderBy): [Account]
+
+    transaction(_id: ID!): Transaction,
+    transactions(dateFrom: String, dateTo: String, order: OrderBy): [Transaction],
 }
