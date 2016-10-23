@@ -25,7 +25,9 @@ app.use(function (req, res, next) {
 
 app.use('/graphql', bodyParser.json(), apolloExpress({
     schema,
-    context: {},
+    context: {
+        // TODO anything to add ?
+    },
     formatError(error) {
         console.error(error.stack);
         return error;

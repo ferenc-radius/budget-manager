@@ -1,3 +1,4 @@
+# Bank account
 type Account {
     _id: ID!
     name: String,

@@ -8,6 +8,7 @@
  - business layer (frontend)
    - apollo-client
    - redux
+   - redux-react
    - react-router
    
  - UI
@@ -20,6 +21,9 @@
    
  - server
    - graphql
-   - mongoose
+   - mongo
+   - mongorito
+   - apollo-server
+   - graphql-tools (to convert graphqls to schema)
    
  
