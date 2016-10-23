@@ -33,7 +33,7 @@ export async function findAll(params, inputTypeDefs, projection) {
 }
 
 export async function create(params, inputTypeDefs, projection) {
-    console.assert(inputTypeDefsl.length == 1, "add method should have only one input type associated");
+    console.assert(inputTypeDefs.length == 1, "add method should have only one input type associated");
     let inputName = inputTypeDefs[0].name;
     let instance = new this(params[inputName]);
     return await instance.save();
