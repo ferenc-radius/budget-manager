@@ -1,6 +1,15 @@
+import _ from "lodash";
+
 
 // TODO this should probably be a class having a method for every lookup type
-export function buildQuery(query, params) {
+export function buildQuery(model, params) {
+    let query = model; // alias ..
+    if (query.__relations) {
+        query.__relations.map(relation => {
+            query = query.populate(relation.name, relation.model);
+        })
+    }
+
     if ("order" in params) { // TODO get order from inputTypeDefs
         query = query.sort(params.order.name, params.order.direction  == "ASC" ? 1 : -1);
         delete params.order;
@@ -21,19 +30,44 @@ export function buildQuery(query, params) {
 
 }
 
-// these methods are just for convenience any special needs you should just feed you own function to the @resolver decorator
-export function findOne(params, inputTypeDefs, projection) {
+export function transform(result, relations) {
+    let item = result.toJSON();
+    relations.forEach(relation => {
+        let {name} = relation;
+        if (item[name]) {
+            item[name] = item[name].map(t => t.toJSON());
+        }
+    });
+    return item;
+}
+
+export function loadRelations(model, results) {
+    if (model.__relations) {
+        if (_.isArray(results)) {
+            return results.map(result => {
+                return transform(result, model.__relations);
+            })
+        } else {
+            return transform(results, model.__relations);
+        }
+    } else {
+        return results.toJSON();
+    }
+}
+
+export async function findOne(params, inputTypeDefs, projection) {
     let query = buildQuery(this, params);
-    return query.findOne();
+    let result = await query.findOne();
+    return loadRelations(this, result);
 }
 
 export async function findAll(params, inputTypeDefs, projection) {
     let query = buildQuery(this, params);
-    return await query.find({}, projection);
+    let result = await query.find({}, projection);
+    return loadRelations(this, result);
 }
 
 export async function create(params, inputTypeDefs, projection) {
-    console.assert(inputTypeDefs.length == 1, "add method should have only one input type associated");
     let inputName = inputTypeDefs[0].name;
     let instance = new this(params[inputName]);
     return await instance.save();

@@ -9,7 +9,6 @@ import {
 } from "graphql/type";
 
 import {getProjectionFromAST} from "./projection";
-import _ from "lodash";
 import {memoize} from 'lodash';
 import {decorate} from 'core-decorators';
 
@@ -21,17 +20,7 @@ export class MongoritoAdapter extends ResolverAdapter {
     async invoke(model, methodName, inputs, root, params, ctx, options) {
 
         const projectionNested = getProjectionFromAST(options);
-        let res = await model[methodName].call(model, params, inputs, projectionNested);
-
-        if (res) {
-            if (!_.isArray(res)) {
-                return res.attributes;
-            } else {
-                return res.map(r => r.attributes);
-            }
-        }
-
-        return null;
+        return await model[methodName].call(model, params, inputs, projectionNested);
     }
 }
 
