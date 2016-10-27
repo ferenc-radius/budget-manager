@@ -8,21 +8,10 @@ import {
     GraphQLInputObjectType
 } from "graphql/type";
 
-import {getProjectionFromAST} from "./projection";
 import {memoize} from 'lodash';
 import {decorate} from 'core-decorators';
+import MongoritoAdapter from "./adapters/mongorito";
 
-class ResolverAdapter {  /** interface **/
-    async invoke(model, methodName, root, params, ctx, options) {}
-}
-
-export class MongoritoAdapter extends ResolverAdapter {
-    async invoke(model, methodName, inputs, root, params, ctx, options) {
-
-        const projectionNested = getProjectionFromAST(options);
-        return await model[methodName].call(model, params, inputs, projectionNested);
-    }
-}
 
 export function createResolverAdapter(backend) {
     // TODO this wont allows the user to define a new adapter...
@@ -37,8 +26,8 @@ export function createResolverAdapter(backend) {
 }
 
 class ResolverBuilder {
-    constructor(queryTypeFields, model, resolverAdapter) {
-        this.typeFields = queryTypeFields;
+    constructor(querytypeDefs, model, resolverAdapter) {
+        this.typeDefs = querytypeDefs;
         this.model = model;
         this.resolverAdapter = resolverAdapter;
     }
@@ -49,7 +38,7 @@ class ResolverBuilder {
 
     @decorate(memoize)
     getMethodNames(modelName) {
-        return Object.entries(this.typeFields).map(([methodName, typeDef]) => {
+        return Object.entries(this.typeDefs).map(([methodName, typeDef]) => {
             let typeName = null;
 
             // find the typename of the query
@@ -74,7 +63,7 @@ class ResolverBuilder {
 
     @decorate(memoize)
     getInputFields(methodName) {
-        let typeField = this.typeFields[methodName];
+        let typeField = this.typeDefs[methodName];
         let args = typeField.args || [];
 
         return args.map(arg => {
@@ -93,7 +82,7 @@ class ResolverBuilder {
         methodNames.forEach(methodName => {
             let inputs = this.getInputFields(methodName);
             resolvers[methodName] = this.resolverAdapter.invoke.bind(
-                this.resolverAdapter, this.model, methodName, inputs
+                this.resolverAdapter, this.model, methodName, inputs, this.typeDefs
             )
         });
 
@@ -121,19 +110,17 @@ export default function buildResolvers(source, models, backend="mongorito", root
         let astDocument = parse(source);
         schema = buildASTSchema(astDocument);
     }
-    const queryTypeFields = schema.getQueryType().getFields();
-    const mutationTypeFields = schema.getMutationType().getFields();
+    const queryTypeDefs = schema.getQueryType().getFields();
+    const mutationTypeDefs = schema.getMutationType().getFields();
     const resolverAdapter = createResolverAdapter(backend);
 
     for (let model of models) {
-        let queryResolvers = new ResolverBuilder(queryTypeFields, model, resolverAdapter).build();
+        let queryResolvers = new ResolverBuilder(queryTypeDefs, model, resolverAdapter).build();
         resolvers[rootQueryName] = {...resolvers[rootQueryName], ...queryResolvers};
 
-        let mutationResolvers = new ResolverBuilder(mutationTypeFields, model, resolverAdapter).build();
+        let mutationResolvers = new ResolverBuilder(mutationTypeDefs, model, resolverAdapter).build();
         resolvers[rootMutationName] = {...resolvers[rootMutationName], ...mutationResolvers};
     }
-
-    console.log("resolvers", resolvers);
 
     return resolvers
 }

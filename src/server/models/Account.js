@@ -16,4 +16,6 @@ async function findWithTransactions(params, inputTypeDefs, projection) {
 @relation("transactions", Transaction)
 export default class Account extends mongorito.Model {
     collection = "accounts";
+
+    // TODO last balance
 }

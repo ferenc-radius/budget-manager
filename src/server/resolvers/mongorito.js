@@ -27,15 +27,14 @@ export function buildQuery(model, params) {
     }
 
     return query;
-
 }
 
-export function transform(result, relations) {
+function _transform(result, relations) {
     let item = result.toJSON();
     relations.forEach(relation => {
         let {name} = relation;
         if (item[name]) {
-            item[name] = item[name].map(t => t.toJSON());
+            item[name] = item[name].map(r => r.toJSON());
         }
     });
     return item;
@@ -45,10 +44,10 @@ export function loadRelations(model, results) {
     if (model.__relations) {
         if (_.isArray(results)) {
             return results.map(result => {
-                return transform(result, model.__relations);
+                return _transform(result, model.__relations);
             })
         } else {
-            return transform(results, model.__relations);
+            return _transform(results, model.__relations);
         }
     } else {
         return results.toJSON();
@@ -67,8 +66,15 @@ export async function findAll(params, inputTypeDefs, projection) {
     return loadRelations(this, result);
 }
 
-export async function create(params, inputTypeDefs, projection) {
+export async function create(params, inputTypeDefs, projection, objectProtoTypeGenerator: Function) {
     let inputName = inputTypeDefs[0].name;
-    let instance = new this(params[inputName]);
-    return await instance.save();
+    let objectProtoType = objectProtoTypeGenerator();
+
+    // merge prototype with the actual input.
+    let input = {...objectProtoType, ...params[inputName]};
+
+    let instance = new this(input);
+    let results = await instance.save();
+    results = loadRelations(this, results);
+    return results;
 }

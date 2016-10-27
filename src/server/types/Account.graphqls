@@ -1,9 +1,15 @@
+input InputAccount {
+    name: String
+    number: String
+    own_account: Boolean
+    saving: Boolean
+}
+
 # Bank account
 type Account {
     _id: ID!
-    name: String,
-    number: String,
-    amount: Int
+    name: String
+    number: String
     own_account: Boolean
     savings: Boolean
     balances: [Balance]
