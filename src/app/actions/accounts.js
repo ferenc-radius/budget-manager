@@ -1,9 +1,10 @@
 import {AccountListQuery} from "app/queries/accounts";
 import {enableLoader, disableLoader} from "app/actions/loader";
-import {loadTransactions} from "app/actions/transactions";
+import {push} from "react-router-redux";
 
 export const ACCOUNTS_LOADED = "ACCOUNTS_LOADED";
 export const ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
+export const ACCOUNT_EDIT = "ACCOUNT_EDIT";
 
 export function loadAccounts(own_accounts=true) {
     return function (dispatch, getState, apolloClient) {
@@ -33,12 +34,28 @@ export function accountsLoaded(result) {
     }
 }
 
+export function showAccountTransactions(id) {
+    return function (dispatch, getState, apolloClient) {
+        dispatch(push(`/account/${id}/transactions`));
+    }
+}
+
 export function selectAccount(id) {
     return function (dispatch, getState, apolloClient) {
         dispatch({
             type: ACCOUNT_SELECTED,
             id
         });
-        dispatch(loadTransactions())
+    }
+}
+
+export function editAccount(id) {
+    return function (dispatch, getState, apolloClient) {
+        dispatch({
+            type: ACCOUNT_EDIT,
+            id
+        });
+
+        dispatch(push(`/account/${id}/edit`))
     }
 }

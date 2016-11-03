@@ -1,4 +1,4 @@
-import {ACCOUNTS_LOADED, ACCOUNT_SELECTED} from "app/actions/accounts";
+import {ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT} from "app/actions/accounts";
 
 const initialState = {list: [], selectedAccount: null};
 
@@ -10,6 +10,8 @@ export default function transactions(state = initialState, action) {
         case ACCOUNT_SELECTED:
             return {...state, selectedAccount: action.id};
 
+        case ACCOUNT_EDIT:
+            return {...state, edit: action.id};
         default:
             return state;
     }

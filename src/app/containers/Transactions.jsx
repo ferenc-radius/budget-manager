@@ -4,7 +4,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import {deleteTransaction} from "app/actions/transactions";
-import {setSidePanel, setActionPanel} from "app/actions/panels";
 
 // ui
 import TransactionList from "app/components/transactions/TransactionList.jsx";
@@ -27,16 +26,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class TransactionsContainer extends React.Component {
-
-    componentDidMount() {
-        this.props.dispatch(setSidePanel("accounts"));
-    }
-
-    render() {
-        return (
-            <TransactionList {...this.props} />
-        )
-    }
-}
+const TransactionContainer = connect(mapStateToProps, mapDispatchToProps)(TransactionList);
+export default TransactionContainer;

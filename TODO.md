@@ -14,7 +14,7 @@
 
 ## graphql
  - querybuilder > filters toevoegen (herschrijven naar class)
- - loading relations...
+ - property methods (get lastBalance)
  
 ## structure 
  - refactor dir structure > 

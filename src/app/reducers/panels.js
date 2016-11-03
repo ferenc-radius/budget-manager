@@ -1,13 +1,14 @@
 import {ACTION_PANEL, SIDE_PANEL} from "app/actions/panels.js";
 
-const initialState = [];
+const initialState = {actionPanel: null, sidePanel: "accounts"};
 export default function panels(state = initialState, action) {
+
     switch (action.type) {
         case ACTION_PANEL:
-            return [...state, action];
+            return {...state, actionPanel: action.name};
 
         case SIDE_PANEL:
-            return [...state, action];
+            return {...state, sidePanel: action.name};
 
         default:
             return state;
