@@ -5,6 +5,7 @@ const initialState = {list: [], selectedAccount: null};
 export default function transactions(state = initialState, action) {
     switch (action.type) {
         case ACCOUNTS_LOADED:
+            // TODO normalize list to {"<id>"" {}}
             return {...state, list: action.result.data.accounts};
 
         case ACCOUNT_SELECTED:
