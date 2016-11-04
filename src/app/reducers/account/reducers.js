@@ -1,4 +1,4 @@
-import {ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT} from "app/actions/accounts";
+import {ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT} from "./actionTypes";
 
 const initialState = {list: [], selectedAccount: null};
 

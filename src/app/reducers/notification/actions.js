@@ -1,5 +1,4 @@
-export const SHOW_NOTIFICATIONS = "SHOW_NOTIFICATIONS";
-export const HIDE_NOTIFICATIONS = "HIDE_NOTIFICATIONS";
+import {SHOW_NOTIFICATIONS, HIDE_NOTIFICATIONS} from "./actionTypes";
 
 export function showNotification(message, options={}) {
     return {

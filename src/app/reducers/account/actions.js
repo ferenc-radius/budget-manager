@@ -1,10 +1,8 @@
 import {AccountListQuery} from "app/queries/accounts";
-import {enableLoader, disableLoader} from "app/actions/loader";
+import {enableLoader, disableLoader} from "../loader/actions";
 import {push} from "react-router-redux";
+import {ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT} from "./actionTypes";
 
-export const ACCOUNTS_LOADED = "ACCOUNTS_LOADED";
-export const ACCOUNT_SELECTED = "ACCOUNT_SELECTED";
-export const ACCOUNT_EDIT = "ACCOUNT_EDIT";
 
 export function loadAccounts(own_accounts=true) {
     return function (dispatch, getState, apolloClient) {

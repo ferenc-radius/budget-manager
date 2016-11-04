@@ -3,9 +3,9 @@ import React from "react";
 // redux
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
-import {loadAccounts} from "app/actions/accounts";
+import {loadAccounts} from "../../reducers/account/actions";
 
-import {showAccountTransactions, editAccount} from "app/actions/accounts";
+import {showAccountTransactions, editAccount} from "../../reducers/account/actions";
 
 // ui
 import AccountList from "app/components/accounts/AccountList.jsx";

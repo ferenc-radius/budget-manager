@@ -17,11 +17,6 @@
  - property methods (get lastBalance)
  
 ## structure 
- - refactor dir structure > 
-   - reducers/<domain>/actionTypes.js
-                       actions.js
-                       reducers.js
- 
  - https://github.com/reactjs/reselect
  - reformat transaction see 
    - https://hackernoon.com/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a#.bb92nztwc

@@ -3,7 +3,7 @@ import React from "react";
 // redux
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import {deleteTransaction} from "app/actions/transactions";
+import { deleteTransaction } from "../reducers/transaction/actions";
 
 // ui
 import TransactionList from "app/components/transactions/TransactionList.jsx";

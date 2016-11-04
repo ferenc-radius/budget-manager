@@ -1,4 +1,4 @@
-import {SHOW_NOTIFICATIONS, HIDE_NOTIFICATIONS} from "app/actions/notification";
+import {SHOW_NOTIFICATIONS, HIDE_NOTIFICATIONS} from "./actionTypes";
 import _ from 'lodash';
 
 const initialState = {
@@ -11,6 +11,7 @@ const initialState = {
         type: "accept"
     }
 };
+
 export default function notifications(state = initialState, action) {
     switch (action.type) {
         case SHOW_NOTIFICATIONS:

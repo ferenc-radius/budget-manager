@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { hideNotification } from "app/actions/notification";
+import { hideNotification } from "../reducers/notification/actions";
 
 import Notification from "app/components/Notification";
 

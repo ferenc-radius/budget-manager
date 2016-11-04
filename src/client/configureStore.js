@@ -9,18 +9,18 @@ import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
 
 // reducers from modules
-import panels from '../app/reducers/panels';
-import accounts from '../app/reducers/accounts';
-import transactions from '../app/reducers/transactions';
-import notification from '../app/reducers/notification';
-import loader from '../app/reducers/loader';
+import panels from 'app/reducers/panel/reducers';
+import accounts from 'app/reducers/account/reducers';
+import transactions from 'app/reducers/transaction/reducers';
+import notification from 'app/reducers/notification/reducers';
+import loader from 'app/reducers/loader/reducers';
 
 // actions
-import * as panelActions from "../app/actions/panels";
-import * as accountActions from "../app/actions/accounts";
-import * as transactionActions from "../app/actions/transactions";
-import * as notificationsActions from "../app/actions/notification";
-import * as loaderActions from "../app/actions/loader";
+import * as panelActions from "app/reducers/panel/actions";
+import * as accountActions from "app/reducers/account/actions";
+import * as transactionActions from "app/reducers/transaction/actions";
+import * as notificationsActions from "app/reducers/notification/actions";
+import * as loaderActions from "app/reducers/loader/actions";
 import apolloActions from 'apollo-client/actions';
 
 export default function configureStore(apolloClient, initialState) {

@@ -1,4 +1,4 @@
-import {TRANSACTIONS_LOADED} from "app/actions/transactions";
+import {TRANSACTIONS_LOADED} from "./actionTypes";
 
 const initialState = {list: []};
 

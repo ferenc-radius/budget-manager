@@ -6,8 +6,8 @@ import TransactionContainer from "app/containers/Transactions";
 import EditAccountContainer from "app/containers/account/edit";
 
 import {store} from "client/index";
-import {selectAccount} from "app/actions/accounts";
-import {loadTransactions} from "app/actions/transactions";
+import {selectAccount} from "app/reducers/account/actions";
+import {loadTransactions} from "app/reducers/transaction/actions";
 
 
 // TODO THIS should be a middleware?

@@ -1,5 +1,4 @@
-export const ENABLE_LOADER = "ENABLE_LOADER";
-export const DISABLE_LOADER = "DISABLE_LOADER";
+import {ENABLE_LOADER, DISABLE_LOADER} from './actionTypes';
 
 export function enableLoader() {
     return {

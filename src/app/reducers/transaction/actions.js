@@ -1,10 +1,10 @@
-import {RemoveTransactionQuery} from "app/queries/transactions";
-import {TransactionListQuery} from "app/queries/transactions";
+import {RemoveTransactionQuery} from "../../queries/transactions";
+import {TransactionListQuery} from "../../queries/transactions";
 
-import {showNotification} from "app/actions/notification";
-import {enableLoader, disableLoader} from "app/actions/loader";
+import {showNotification} from "../notification/actions";
+import {enableLoader, disableLoader} from "../loader/actions";
 
-export const TRANSACTIONS_LOADED = "TRANSACTIONS_LOADED";
+import {TRANSACTIONS_LOADED} from "./actionTypes";
 
 export function loadTransactions(forceFetch=false) {
     return function (dispatch, getState, apolloClient) {
