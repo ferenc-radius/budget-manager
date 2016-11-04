@@ -7,6 +7,7 @@ import createLogger from "redux-logger";
 // reducers
 import { combineReducers } from 'redux';
 import { routerReducer as routing } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 
 // reducers from modules
 import panels from 'app/reducers/panel/reducers';
@@ -34,6 +35,7 @@ export default function configureStore(apolloClient, initialState) {
 
     const rootReducer = combineReducers({
         apollo: apolloClient.reducer(),
+        form: formReducer,
         panels,
         accounts,
         transactions,

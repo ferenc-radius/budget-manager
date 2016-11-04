@@ -7,11 +7,10 @@ import EditAccountContainer from "app/containers/account/edit";
 
 import {store} from "client/index";
 import {selectAccount} from "app/reducers/account/actions";
-import {loadTransactions} from "app/reducers/transaction/actions";
 
 
 // TODO THIS should be a middleware?
-function mapParamsToState(props, actions) {
+function mapParamsToState(props) {
     let {params} = props;
     Object.entries(params).map(([key, value]) => {
         switch (key) {
@@ -20,10 +19,6 @@ function mapParamsToState(props, actions) {
             break;
         }
     });
-
-    if (actions) {
-        actions.map(a => store.dispatch(a()));
-    }
 }
 
 
@@ -32,7 +27,7 @@ export default (
         <IndexRoute component={TransactionContainer} />
         <Route path="/account/:accountId/transactions"
                component={TransactionContainer}
-               onEnter={(props) => mapParamsToState(props, [loadTransactions])}
+               onEnter={(props) => mapParamsToState(props)}
         />
         <Route path="/account/:accountId/edit"
                component={EditAccountContainer}

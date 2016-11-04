@@ -1,4 +1,4 @@
-import {ACTION_PANEL, SIDE_PANEL} from "./actionTypes";
+import {ACTION_PANEL, SIDE_PANEL} from "./actionTypes"  ;
 
 const initialState = {actionPanel: null, sidePanel: "accounts"}; // TODO use constants for panels
 export default function panels(state = initialState, action) {

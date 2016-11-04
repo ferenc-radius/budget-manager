@@ -6,23 +6,23 @@ import {IconMenu, MenuItem } from 'react-toolbox/lib/menu';
 export default class AccountList extends React.Component {
 
     render() {
-        const {accounts, onClick, editAccount} = this.props;
+        const {accountDict, onClick, editAccount} = this.props;
 
         return (
             <List selectable>
                 <ListSubHeader caption='Accounts' />
-                {accounts.map(account => {
+                {Object.entries(accountDict).map(([id, account]) => {
                     let rightActions = [
                         <IconMenu id="menu" key="menu" icon='more_vert' position='topRight' menuRipple
                                   onClick={(event) => event.stopPropagation()}>
-                            <MenuItem value='edit' icon='edit' caption='Edit' onClick={() => editAccount(account._id)}  />
+                            <MenuItem value='edit' icon='edit' caption='Edit' onClick={() => editAccount(id)}  />
                         </IconMenu>
                     ];
 
                     return (
                         <ListItem
-                            onClick={(event) => onClick(account._id)}
-                            key={account._id}
+                            onClick={(event) => onClick(id)}
+                            key={id}
                             caption={account.name}
                             legend={account.number}
                             rightActions={rightActions}

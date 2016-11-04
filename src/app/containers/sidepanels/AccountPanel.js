@@ -13,7 +13,7 @@ import AccountList from "app/components/accounts/AccountList.jsx";
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        accounts: state.accounts.list
+        accountDict: state.accounts.entities.accounts
     };
 };
 

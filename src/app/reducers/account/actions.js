@@ -2,6 +2,7 @@ import {AccountListQuery} from "app/queries/accounts";
 import {enableLoader, disableLoader} from "../loader/actions";
 import {push} from "react-router-redux";
 import {ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT} from "./actionTypes";
+import { Schema, arrayOf, normalize } from "normalizr";
 
 
 export function loadAccounts(own_accounts=true) {
@@ -23,9 +24,16 @@ export function loadAccounts(own_accounts=true) {
 
 export function accountsLoaded(result) {
     return function (dispatch, getState, apolloClient) {
+
+        // normalize data
+        const accountSchema = new Schema(
+            'accounts', { idAttribute: '_id' }
+        );
+        let results = normalize(result.data, {accounts: arrayOf(accountSchema)});
+
         dispatch({
             type: ACCOUNTS_LOADED,
-            result
+            results
         });
 
         dispatch(disableLoader());
@@ -49,11 +57,6 @@ export function selectAccount(id) {
 
 export function editAccount(id) {
     return function (dispatch, getState, apolloClient) {
-        dispatch({
-            type: ACCOUNT_EDIT,
-            id
-        });
-
         dispatch(push(`/account/${id}/edit`))
     }
 }

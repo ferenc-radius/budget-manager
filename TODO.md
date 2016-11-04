@@ -17,6 +17,8 @@
  - property methods (get lastBalance)
  
 ## structure 
+ - https://junctions.js.org/
+ - https://github.com/tonyhb/redux-ui
  - https://github.com/reactjs/reselect
  - reformat transaction see 
    - https://hackernoon.com/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a#.bb92nztwc
@@ -25,6 +27,7 @@
  - https://docs.mongodb.com/manual/core/map-reduce/ gebruiken om bijvoorbeeld transaction amount in periode uit te rekenen.'
  - https://github.com/nnance/f8app-apollo > flowtype
  - https://www.npmjs.com/package/invariant
+ - https://hackernoon.com/building-d3-components-with-react-7510e4743288#.rvk5a5e3w
 
 ## starten servers
  - pm2 gebruiken om bin/server.js te starten
