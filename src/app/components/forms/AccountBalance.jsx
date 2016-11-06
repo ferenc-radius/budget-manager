@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form'
 import TextField from "../fields/TextField";
 
 
-@reduxForm({form: 'account', enableReinitialize: true})
+@reduxForm({form: 'add_balance', enableReinitialize: true})
 export default class AccountBalanceForm extends React.Component {
 
     render() {
