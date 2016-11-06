@@ -3,7 +3,7 @@ import thunkMiddleware from "redux-thunk";
 import { browserHistory } from "react-router";
 import createLogger from "redux-logger";
 
-import {routerMiddleware, push} from "react-router-redux";
+import { routerMiddleware } from "react-router-redux";
 import { createResponsiveStoreEnhancer } from 'redux-responsive'
 
 // reducers
@@ -19,13 +19,6 @@ import transactions from 'app/reducers/transaction/reducers';
 import notification from 'app/reducers/notification/reducers';
 import loader from 'app/reducers/loader/reducers';
 
-// actions
-import * as panelActions from "app/reducers/panel/actions";
-import * as accountActions from "app/reducers/account/actions";
-import * as transactionActions from "app/reducers/transaction/actions";
-import * as notificationsActions from "app/reducers/notification/actions";
-import * as loaderActions from "app/reducers/loader/actions";
-import apolloActions from 'apollo-client/actions';
 
 export default function configureStore(apolloClient, initialState) {
     let store;
@@ -48,11 +41,13 @@ export default function configureStore(apolloClient, initialState) {
         routing
     });
 
+
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     if (process.env.NODE_ENV === 'production') {
         store = createStore(
             rootReducer,
             initialState,
-            compose(
+            composeEnhancers(
                 createResponsiveStoreEnhancer({performanceMode: true}),
                 applyMiddleware(...middlewares),
             )
@@ -64,29 +59,15 @@ export default function configureStore(apolloClient, initialState) {
         });
         middlewares.push(logger);
 
-        const actionCreators = {
-            ...panelActions,
-            ...accountActions,
-            ...transactionActions,
-            ...notificationsActions,
-            ...loaderActions,
-            apolloActions,
-            push,
-        };
-
         store = createStore(
             rootReducer,
             initialState,
-            compose(
+            composeEnhancers(
                 createResponsiveStoreEnhancer({performanceMode: true}),
-                applyMiddleware(...middlewares),
-                window.devToolsExtension ? window.devToolsExtension({ actionCreators }) : noop => noop
+                applyMiddleware(...middlewares)
 
             )
         );
-        if (window.devToolsExtension) {
-            window.devToolsExtension.updateStore(store);
-        }
     }
 
     return store;
