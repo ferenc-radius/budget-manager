@@ -60,3 +60,9 @@ export function editAccount(id) {
         dispatch(push(`/account/${id}/edit`))
     }
 }
+
+export function addAccountBalance(id) {
+    return function (dispatch, getState, apolloClient) {
+        dispatch(push(`/account/${id}/add_balance`))
+    }
+}

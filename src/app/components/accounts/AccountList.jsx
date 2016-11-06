@@ -11,7 +11,7 @@ import Avatar from 'react-toolbox/lib/avatar';
 export default class AccountList extends React.Component {
 
     render() {
-        const {accountDict, onClick, editAccount} = this.props;
+        const {accountDict, onClick, editAccount, addAccountBalance} = this.props;
 
         return (
             <List selectable>
@@ -26,7 +26,7 @@ export default class AccountList extends React.Component {
                         <IconMenu id="menu" key="menu" icon='more_vert' position='topRight' menuRipple
                                   onClick={(event) => event.stopPropagation()}>
                             <MenuItem value='edit' icon='edit' caption='Edit' onClick={() => editAccount(id)}  />
-                            <MenuItem value='add-balance' caption='Add balance' icon='account_balance' onClick={() => alert("implement add balanace") }/>
+                            <MenuItem value='add-balance' caption='Add balance' icon='account_balance' onClick={() => addAccountBalance(id) }/>
                         </IconMenu>
                     ];
 

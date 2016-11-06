@@ -3,10 +3,10 @@ import React from "react";
 // redux
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
-import { deleteTransaction, loadTransactions } from "../reducers/transaction/actions";
+import { deleteTransaction, loadTransactions } from "../../reducers/transaction/actions";
 
 // ui
-import TransactionList from "app/components/transactions/TransactionList.jsx";
+import TransactionList from "../../components/transactions/TransactionList.jsx";
 
 
 const mapStateToProps = (state) => {

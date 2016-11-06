@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { hideNotification } from "../../reducers/notification/actions";
 
-import AccountEdit from "app/components/accounts/AccountEdit.jsx";
+import AccountBalance from "app/components/accounts/AccountBalance";
 
 const mapStateToProps = (state) => {
     let accountState = state.accounts;
@@ -22,6 +22,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     }, dispatch)
 };
 
-const EditAccountContainer = connect(mapStateToProps, mapDispatchToProps)(AccountEdit);
-export default EditAccountContainer;
-
+const AddBalanceContainer = connect(mapStateToProps, mapDispatchToProps)(AccountBalance);
+export default AddBalanceContainer;

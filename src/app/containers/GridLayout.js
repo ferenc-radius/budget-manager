@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 
 import GridLayout from "app/components/GridLayout";
-import AccountPanel from "app/containers/sidepanels/AccountPanel";
+import AccountPanel from "app/containers/sidepanels/account";
 
 const panelMap = {
     accounts: AccountPanel

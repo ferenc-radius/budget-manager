@@ -2,8 +2,9 @@ import React from "react";
 import { Route, IndexRoute } from "react-router";
 
 import App from "app/components/App";
-import TransactionContainer from "app/containers/Transactions";
+import TransactionContainer from "app/containers/transactions/list";
 import EditAccountContainer from "app/containers/account/edit";
+import AddBalanceContainer from "app/containers/account/balance"
 
 import {store} from "client/index";
 import {selectAccount} from "app/reducers/account/actions";
@@ -31,6 +32,11 @@ export default (
         />
         <Route path="/account/:accountId/edit"
                component={EditAccountContainer}
-               onEnter={(props) => mapParamsToState(props)} />
+               onEnter={(props) => mapParamsToState(props)}
+        />
+        <Route path="/account/:accountId/add_balance"
+               component={AddBalanceContainer}
+               onEnter={(props) => mapParamsToState(props)}
+        />
     </Route>
 );

@@ -3,7 +3,9 @@ import React from "react";
 // redux
 import {connect} from "react-redux";
 import {bindActionCreators} from 'redux';
-import {loadAccounts, showAccountTransactions, editAccount} from "app/reducers/account/actions";
+import {
+    loadAccounts, showAccountTransactions, editAccount, addAccountBalance
+} from "app/reducers/account/actions";
 
 // ui
 import AccountList from "app/components/accounts/AccountList.jsx";
@@ -18,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     const actions = bindActionCreators({
         editAccount: editAccount,
+        addAccountBalance: addAccountBalance,
         onClick: showAccountTransactions
     }, dispatch);
 
