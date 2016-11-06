@@ -1,7 +1,7 @@
-import {AccountListQuery} from "app/queries/accounts";
-import {enableLoader, disableLoader} from "../loader/actions";
-import {push} from "react-router-redux";
-import {ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT} from "./actionTypes";
+import { AccountListQuery } from "app/queries/accounts";
+import { enableLoader, disableLoader } from "../loader/actions";
+import { push } from "react-router-redux";
+import { ACCOUNTS_LOADED, ACCOUNT_SELECTED, ACCOUNT_EDIT } from "./actionTypes";
 import { Schema, arrayOf, normalize } from "normalizr";
 
 

@@ -12,7 +12,7 @@ import TransactionList from "app/components/transactions/TransactionList.jsx";
 const mapStateToProps = (state) => {
     return {
         selectedAccount: state.accounts.selectedAccount,
-        transactions: state.transactions.list
+        transactionDict: state.transactions.entities.transactions
     };
 };
 

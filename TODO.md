@@ -50,7 +50,6 @@ Transactions
  - property methods (get lastBalance)
  
 ## structure 
- - reformat transaction with normalizr
  - https://github.com/elgerlambert/redux-localstorage ( https://github.com/michaelcontento/redux-storage ?)
  - https://github.com/reactjs/reselect
  - https://github.com/nnance/f8app-apollo > flowtype

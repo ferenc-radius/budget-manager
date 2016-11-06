@@ -1,16 +1,11 @@
 import {TRANSACTIONS_LOADED} from "./actionTypes";
 
-const initialState = {list: []};
+const initialState = {result: {transactions: []}, entities: {transactions: {}}};
 
 export default function transactions(state = initialState, action) {
     switch (action.type) {
         case TRANSACTIONS_LOADED:
-            const serverData = action.result.data;
-
-            // TODO normalize list to {"<id>"" {}}
-            const transactions = serverData.account.transactions;
-
-            return {...state, list: transactions};
+            return {...state, ...action.results};
 
         default:
             return state;

@@ -1,10 +1,11 @@
-import {RemoveTransactionQuery} from "../../queries/transactions";
-import {TransactionListQuery} from "../../queries/transactions";
+import { RemoveTransactionQuery } from "../../queries/transactions";
+import { TransactionListQuery } from "../../queries/transactions";
 
-import {showNotification} from "../notification/actions";
-import {enableLoader, disableLoader} from "../loader/actions";
+import { showNotification} from "../notification/actions";
+import { enableLoader, disableLoader} from "../loader/actions";
+import { Schema, arrayOf, normalize } from "normalizr";
 
-import {TRANSACTIONS_LOADED} from "./actionTypes";
+import { TRANSACTIONS_LOADED } from "./actionTypes";
 
 export function loadTransactions(forceFetch=false) {
     return function (dispatch, getState, apolloClient) {
@@ -29,9 +30,17 @@ export function loadTransactions(forceFetch=false) {
 
 export function transactionLoaded(result) {
     return function (dispatch, getState, apolloClient) {
+
+        // normalize data
+        const transactionSchema = new Schema(
+            'transactions', { idAttribute: '_id' }
+        );
+        let results = normalize(result.data.account, {transactions: arrayOf(transactionSchema)});
+        if (!results.entities.transactions) results.entities.transactions = {};
+
         dispatch({
             type: TRANSACTIONS_LOADED,
-            result
+            results
         });
 
         dispatch(disableLoader());

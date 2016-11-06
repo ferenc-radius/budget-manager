@@ -9,15 +9,15 @@ export default class TransactionsList extends React.Component {
 
     static propTypes = {
         deleteTransaction: React.PropTypes.func.isRequired,
-        transactions: React.PropTypes.array.isRequired
+        transactionDict: React.PropTypes.object.isRequired
     };
 
     render() {
-        let {transactions} = this.props;
+        let {transactionDict} = this.props;
         return (
             <List selectable>
                 <ListSubHeader caption='Transactions' />
-                {transactions.map(transaction => {
+                {Object.entries(transactionDict).map(([id, transaction]) => {
 
                     // TODO transaction needs a field 'isInvoice'?
                     // TODO based on account it is allowed to delete certain transactions (At most situations it isnt)
@@ -31,7 +31,7 @@ export default class TransactionsList extends React.Component {
 
                     return (
                         <ListItem
-                            key={transaction._id}
+                            key={id}
                             rightActions={rightActions}
                             caption={transaction.name}
                             legend={transaction.account? transaction.account.name : ""}

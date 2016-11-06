@@ -19,8 +19,8 @@ export default class AccountList extends React.Component {
                 {Object.entries(accountDict).map(([id, account]) => {
                     // TODO ADD last-balance
                     let rightActions = [
-                        <Chip className={styles.balance}>
-                            <Avatar><FontIcon value="account_balance"/></Avatar>
+                        <Chip key="balance-chip" className={styles.balance}>
+                            <Avatar key="balance-icon-wrapper"><FontIcon key="balance-icon" value="account_balance"/></Avatar>
                             12345,00
                         </Chip>,
                         <IconMenu id="menu" key="menu" icon='more_vert' position='topRight' menuRipple

@@ -28,18 +28,15 @@ export default class App extends React.Component {
         let {children} = this.props;
         return (
             <Layout>
-                <NavDrawer active={this.state.drawerActive}
-                           onOverlayClick={ this.toggleDrawerActive }>
-                    <p>
-                        <List selectable>
-                            <ListItem leftIcon="credit_card" caption="Transactions" />
-                            <ListItem leftIcon="monetization_on" caption="Budgets" />
-                            <ListItem leftIcon="receipt" caption="Invoices" />
-                            <ListItem leftIcon="file_upload" caption="Import"/>
-                            <ListItem leftIcon="category" caption="Categories"/>
-                            <ListItem leftIcon="settings" caption="Settings"/>
-                        </List>
-                    </p>
+                <NavDrawer active={this.state.drawerActive} onOverlayClick={ this.toggleDrawerActive }>
+                    <List selectable>
+                        <ListItem leftIcon="credit_card" caption="Transactions" />
+                        <ListItem leftIcon="monetization_on" caption="Budgets" />
+                        <ListItem leftIcon="receipt" caption="Invoices" />
+                        <ListItem leftIcon="file_upload" caption="Import"/>
+                        <ListItem leftIcon="category" caption="Categories"/>
+                        <ListItem leftIcon="settings" caption="Settings"/>
+                    </List>
                 </NavDrawer>
                 <Panel>
                     <AppBar><IconButton icon="menu" onClick={ this.toggleDrawerActive }/></AppBar>
