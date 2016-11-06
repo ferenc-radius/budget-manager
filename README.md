@@ -2,6 +2,7 @@
 
 ## uses
  - build
+   - yarn
    - webpack
    - postcss
    - sass
@@ -10,6 +11,9 @@
    - redux
    - redux-react
    - react-router
+   - normalizr to normalize data to fit state
+   - redux-form
+   - redux-responsive
    
  - UI
    - react
@@ -18,6 +22,7 @@
    - react-fontawesome (icons > import FontAwesome from 'react-fontawesome')
    - material-ui icons (more icons use by react-toolkit FontIcon)
    - react-flexbox-grid
+   
    
  - server
    - graphql

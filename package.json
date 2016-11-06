@@ -37,6 +37,7 @@
     "mongodb": "^2.2.11",
     "mongorito": "^2.1.2",
     "nodemon": "^1.11.0",
+    "normalizr": "^2.2.1",
     "react": "^15.3.2",
     "react-addons-css-transition-group": "^15.3.2",
     "react-addons-pure-render-mixin": "^15.3.2",
@@ -56,6 +57,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.1.1",
     "redux-logger": "^2.7.4",
+    "redux-responsive": "^3.1.5",
     "redux-saga": "^0.12.1",
     "redux-thunk": "^2.1.0",
     "roboto-fontface": "^0.6.0"

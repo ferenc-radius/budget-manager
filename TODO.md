@@ -1,32 +1,62 @@
+
 ## Features
- - crud accounts
+Accounts
+========
+ - update accounts
  - add balance to account (huidige balance zien)
- - categories + subcategories aanmaken (tree structure)
- - budgets aanmaken (deze hoord bij een category)
- - overzicht van balance per account (huidige balance)
+ - laatste balance toevoegen
+ - laatste balance in overzicht
+ 
+Settings
+========
+ - maand periode kunnen defineren. (settings) (opslaan in state & localstorage)
+ 
+Categorieen
+===========
+  - categories + subcategories aanmaken (tree structure)
+  - inzien van uitgaven per categorie
+  - pie-chart met uitgaven per categorie
+  - pie-chart met inkomsten per categorie
+  
+Invoices
+========
+ - overzicht van verwachte invoices deze maand (nu per maand)
+ - overzicht van de deze maand nog open staande invoices
+ 
+Budgets
+=======
+  - budgets aanmaken (deze hoord bij een category)
+  - inzien uitgaven in budget (transactions in category van budget)
+
+Importeren
+==========
  - importeren transactions
  - transaction aan account hangen (van en tot rekening > 2 accounts).
  - transaction aan category hangen.
- - inzien uitgaven in budget (transactions in category van budget)
+
+Transactions
+============
+ - opsplitsen
+ - aan categoriee hangen (met optie om 'gelijke' transactions ook in die category te geven)
+ - maak invoice van transaction
 
 ## UI
- - https://www.materialpalette.com
+ - account filter (reselect!)
+ - accounts toggle voor mobiel layout
+ - https://github.com/tonyhb/redux-ui (for what??)
 
 ## graphql
  - querybuilder > filters toevoegen (herschrijven naar class)
  - property methods (get lastBalance)
  
 ## structure 
- - https://junctions.js.org/
- - https://github.com/tonyhb/redux-ui
+ - reformat transaction with normalizr
+ - https://github.com/elgerlambert/redux-localstorage ( https://github.com/michaelcontento/redux-storage ?)
  - https://github.com/reactjs/reselect
- - reformat transaction see 
-   - https://hackernoon.com/avoiding-accidental-complexity-when-structuring-your-app-state-6e6d22ad5e2a#.bb92nztwc
-   - https://github.com/paularmstrong/normalizr
- - https://docs.mongodb.com/manual/ > lezen ;)
- - https://docs.mongodb.com/manual/core/map-reduce/ gebruiken om bijvoorbeeld transaction amount in periode uit te rekenen.'
  - https://github.com/nnance/f8app-apollo > flowtype
  - https://www.npmjs.com/package/invariant
+ - https://docs.mongodb.com/manual/ > lezen ;)
+ - https://docs.mongodb.com/manual/core/map-reduce/ gebruiken om bijvoorbeeld transaction amount in periode uit te rekenen.'
  - https://hackernoon.com/building-d3-components-with-react-7510e4743288#.rvk5a5e3w
 
 ## starten servers
@@ -42,11 +72,8 @@
 ## pub/sub
  - ?
  
-## forms
- - uitzoeken redux-form
  
 ## Technical
- - reactd3 aan de praat krijgen.
  - mongo indexes?
  
 ## ophalen csv knab

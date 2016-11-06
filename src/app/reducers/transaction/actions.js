@@ -34,9 +34,6 @@ export function transactionLoaded(result) {
             result
         });
 
-        // TODO assign transactions to categories
-        console.log("TODO assign transactions to categories");
-
         dispatch(disableLoader());
     }
 }

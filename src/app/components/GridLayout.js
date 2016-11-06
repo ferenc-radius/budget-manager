@@ -2,13 +2,23 @@ import React from "react";
 
 // grid
 import { Grid, Row, Col } from "react-flexbox-grid/lib/index";
+import classNames from 'classnames';
+
 
 import styles from "app/components/GridLayout.scss";
 
 export default class GridLayout extends React.Component {
 
     render() {
-        let {actionPanel, sidePanel, hasSidePanel, hasActionPanel, main} = this.props;
+        let {actionPanel, sidePanel, hasSidePanel, hasActionPanel, main, mediumSize} = this.props;
+        // TODO splitup this method
+
+        let mainColumns = 12;
+        let panelColumns = 12;
+        if (mediumSize) {
+            panelColumns = 4;
+            mainColumns = hasSidePanel? 8 : 12
+        }
 
         let actionRow = <div />;
         if (hasActionPanel) {
@@ -24,8 +34,14 @@ export default class GridLayout extends React.Component {
         let sidePanelCol = <div />;
         if (hasSidePanel) {
             let sidePanelComponent = React.createElement(sidePanel);
+
+            let enabledClassNames = classNames({
+                [styles.sidePanel]: true,
+                [styles.aside]: mediumSize
+            });
+
             sidePanelCol = (
-                <Col xs={3} className={styles.sidePanel}>
+                <Col key="sidebar" xs={panelColumns} className={enabledClassNames}>
                     {sidePanelComponent}
                 </Col>
             )
@@ -36,7 +52,7 @@ export default class GridLayout extends React.Component {
                 {actionRow}
                 <Row>
                     {sidePanelCol}
-                    <Col xs={hasSidePanel? 9 : 12}>
+                    <Col xs={mainColumns}>
                         {main}
                     </Col>
                 </Row>

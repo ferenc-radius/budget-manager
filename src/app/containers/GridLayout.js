@@ -15,7 +15,10 @@ const mapStateToProps = (state) => {
     let actionPanel = hasActionPanel? panelMap[panels.actionPanel] : null;
     let sidePanel = hasSidePanel? panelMap[panels.sidePanel] : null;
 
+    let mediumSize = state.browser.greaterThan.medium;
+
     return {
+        mediumSize,
         actionPanel,
         sidePanel,
         hasSidePanel,
