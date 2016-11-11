@@ -25,12 +25,13 @@ export default class App extends React.Component {
 
     render() {
         // pass the children (passed by the router) as main content for the grid-layout.
-        let {children} = this.props;
+        let {children, push} = this.props;
         return (
             <Layout>
                 <NavDrawer active={this.state.drawerActive} onOverlayClick={ this.toggleDrawerActive }>
                     <List selectable>
-                        <ListItem leftIcon="credit_card" caption="Transactions" />
+                        <ListItem leftIcon="dashboard" caption="Dashboard" onClick={() => push("/")} />
+                        <ListItem leftIcon="credit_card" caption="Transactions" onClick={() => push("/account/")} />
                         <ListItem leftIcon="monetization_on" caption="Budgets" />
                         <ListItem leftIcon="receipt" caption="Invoices" />
                         <ListItem leftIcon="file_upload" caption="Import"/>

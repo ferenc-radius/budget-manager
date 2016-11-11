@@ -11,20 +11,13 @@ export default class GridLayout extends React.Component {
 
     render() {
         let {actionPanel, sidePanel, hasSidePanel, hasActionPanel, main, mediumSize} = this.props;
-        // TODO splitup this method
-
-        let mainColumns = 12;
-        let panelColumns = 12;
-        if (mediumSize) {
-            panelColumns = 4;
-            mainColumns = hasSidePanel? 8 : 12
-        }
+        let mainColumns = hasSidePanel? 8 : 12;
 
         let actionRow = <div />;
         if (hasActionPanel) {
             actionRow = (
                 <Row>
-                    <Col xsOffset={3} xs={12}>
+                    <Col xsOffset={3} xs={12} >
                         {actionPanel}
                     </Col>
                 </Row>
@@ -41,7 +34,7 @@ export default class GridLayout extends React.Component {
             });
 
             sidePanelCol = (
-                <Col key="sidebar" xs={panelColumns} className={enabledClassNames}>
+                <Col key="sidebar" xs={12} md={4} className={enabledClassNames}>
                     {sidePanelComponent}
                 </Col>
             )
@@ -52,7 +45,7 @@ export default class GridLayout extends React.Component {
                 {actionRow}
                 <Row>
                     {sidePanelCol}
-                    <Col xs={mainColumns}>
+                    <Col xs={12} md={mainColumns}>
                         {main}
                     </Col>
                 </Row>
