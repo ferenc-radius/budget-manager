@@ -1,9 +1,12 @@
 import React from "react";
 
+import {PanelType} from "app/types/panel";
+
 // redux
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux';
 import { deleteTransaction, loadTransactions } from "../../reducers/transaction/actions";
+import { setSidePanel } from "../../reducers/panel/actions";
 
 // ui
 import TransactionList from "../../components/transactions/TransactionList.jsx";
@@ -19,7 +22,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     const actions = bindActionCreators({
         deleteTransaction,
-        loadTransactions
+        loadTransactions,
+        setSidePanel
     }, dispatch);
 
     return {
@@ -38,6 +42,7 @@ export default class TransactionsContainer extends React.Component {
     }
 
     componentDidMount   () {
+        this.props.setSidePanel(PanelType.ACCOUNTS.name);
         this.props.loadTransactions();
     }
 

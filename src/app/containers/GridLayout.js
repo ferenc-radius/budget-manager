@@ -1,19 +1,16 @@
 import React from "react";
 import {connect} from "react-redux";
+import {PanelType} from "app/types/panel";
+import { bindActionCreators } from 'redux';
 
 import GridLayout from "app/components/GridLayout";
-import AccountPanel from "app/containers/sidepanels/account";
-
-const panelMap = {
-    accounts: AccountPanel
-};
 
 const mapStateToProps = (state) => {
     let {panels} = state;
-    let hasSidePanel = "sidePanel" in panels;
-    let hasActionPanel = "actionPanel" in panels;
-    let actionPanel = hasActionPanel? panelMap[panels.actionPanel] : null;
-    let sidePanel = hasSidePanel? panelMap[panels.sidePanel] : null;
+    let hasSidePanel = "sidePanel" in panels && panels.sidePanel != null;
+    let hasActionPanel = "actionPanel" in panels && panels.actionPanel != null;
+    let actionPanel = hasActionPanel? PanelType.getByName(panels.actionPanel).getComponent() : null;
+    let sidePanel = hasSidePanel? PanelType.getByName(panels.sidePanel).getComponent() : null;
 
     let mediumSize = state.browser.greaterThan.medium;
 

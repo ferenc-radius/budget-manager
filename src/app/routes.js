@@ -1,7 +1,8 @@
 import React from "react";
 import { Route, IndexRoute } from "react-router";
 
-import App from "app/components/App";
+import AppContainer from "app/containers/App";
+import DashboardContainer from "app/containers/Dashboard";
 import TransactionContainer from "app/containers/transactions/list";
 import EditAccountContainer from "app/containers/account/edit";
 import AddBalanceContainer from "app/containers/account/balance"
@@ -24,8 +25,11 @@ function mapParamsToState(props) {
 
 
 export default (
-    <Route path="/" components={App} onEnter={(props) => mapParamsToState(props)}>
-        <IndexRoute component={TransactionContainer} />
+    <Route path="/" components={AppContainer} onEnter={(props) => mapParamsToState(props)}>
+        <IndexRoute component={DashboardContainer} />
+        <Route path="/account/"
+               component={TransactionContainer}
+        />
         <Route path="/account/:accountId/transactions"
                component={TransactionContainer}
                onEnter={(props) => mapParamsToState(props)}

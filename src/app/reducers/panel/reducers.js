@@ -1,6 +1,6 @@
 import {ACTION_PANEL, SIDE_PANEL} from "./actionTypes"  ;
 
-const initialState = {actionPanel: null, sidePanel: "accounts"}; // TODO use constants for panels
+const initialState = {actionPanel: null, sidePanel: null};
 export default function panels(state = initialState, action) {
 
     switch (action.type) {
